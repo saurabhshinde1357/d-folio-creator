@@ -76,7 +76,7 @@ export function Publications() {
 
 export function Universe() {
   const groups = Object.keys(skills);
-  const [g, setG] = useState(groups[0]);
+  const [g, setG] = useState<string>(groups[0] ?? "");
   return (
     <section id="universe" className="border-t border-border py-32">
       <div className={wrap}>
@@ -92,7 +92,7 @@ export function Universe() {
           </div>
           <div role="tabpanel" className="md:col-span-8">
             <div key={g} className="flex flex-wrap gap-3 animate-in fade-in duration-500">
-              {skills[g].map((s) => <span key={s} className="display border border-border px-5 py-3 text-2xl md:text-3xl">{s}</span>)}
+              {(skills[g] ?? []).map((s: string) => <span key={s} className="display border border-border px-5 py-3 text-2xl md:text-3xl">{s}</span>)}
             </div>
           </div>
         </div>
