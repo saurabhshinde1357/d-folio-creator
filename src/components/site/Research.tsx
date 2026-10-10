@@ -22,7 +22,7 @@ function IntervalChart() {
   const band = pts.filter((p) => p.c <= t);
   const area = `M${band.map((p) => `${x(p.c)},${y(p.hi)}`).join(" L")} L${[...band].reverse().map((p) => `${x(p.c)},${y(p.lo)}`).join(" L")} Z`;
   const line = `M${band.map((p) => `${x(p.c)},${y(p.rul)}`).join(" L")}`;
-  const cur = pts[t];
+  const cur = pts[t] ?? pts[0]!;
   return (
     <figure className="border border-border bg-surface p-5">
       <div className="flex items-center justify-between"><p className="eyebrow">Predicted RUL with interval</p><Tag>Illustrative</Tag></div>
